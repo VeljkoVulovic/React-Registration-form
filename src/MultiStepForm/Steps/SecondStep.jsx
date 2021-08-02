@@ -7,18 +7,22 @@ import {
   LockOutlined,
 } from "@ant-design/icons";
 import { Controller, useForm } from "react-hook-form";
-import FormDataContext from "../context/FormDataContext";
+import FormDataContext from "../Context/FormDataContext";
+
+const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+// password regex changed
 
 export default function SecondStep({ setStep }) {
   const { data, setValues } = useContext(FormDataContext);
-  console.log(data);
 
   const {
     control,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
-    mode: "onTouched",
     defaultValues: {
       username: data?.username,
       email: data?.email,
@@ -26,9 +30,6 @@ export default function SecondStep({ setStep }) {
       password_confirm: data?.password_confirm,
     },
   });
-
-  // const password = useRef({});
-  // password.current = watch("password", "");
 
   const onSubmit = (secondStepData) => {
     setValues(secondStepData);
@@ -86,8 +87,8 @@ export default function SecondStep({ setStep }) {
               value: true,
               message: "This field is required",
             },
-            emailValidator: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            pattern: {
+              value: emailRegex,
               message: "Email validation failed",
             },
           }}
@@ -117,7 +118,7 @@ export default function SecondStep({ setStep }) {
               {...field}
               prefix={<LockOutlined className="site-form-item-icon" />}
               allowClear
-              type="string"
+              type="password"
               placeholder={"Password"}
             />
           )}
@@ -126,8 +127,8 @@ export default function SecondStep({ setStep }) {
               value: true,
               message: "This field is required",
             },
-            passwordStrength: {
-              value: /^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/,
+            pattern: {
+              value: passwordRegex,
               message: "Password strength failed",
             },
           }}
@@ -148,20 +149,25 @@ export default function SecondStep({ setStep }) {
               {...field}
               prefix={<LockOutlined className="site-form-item-icon" />}
               allowClear
-              type="string"
+              type="password"
               placeholder={"Password Confirmation"}
             />
           )}
           rules={{
-            // validate: (value) =>
-            //   value === password.current || "The passwords do not match",
             required: {
               value: true,
               message: "This field is required",
             },
-            passwordStrength: {
-              value: /^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/,
+            pattern: {
+              value: passwordRegex,
               message: "Password strength failed",
+            },
+            validate: (value) => {
+              if (value === getValues()["password"]) {
+                return true;
+              } else {
+                return "The passwords do not match";
+              }
             },
           }}
         />

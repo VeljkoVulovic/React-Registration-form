@@ -26,17 +26,6 @@ body {
   box-shadow: 0 0 1.5rem 0 black inset;
 }
 
-/* .logo-box {
-  position: absolute;
-  top: 3.5rem;
-  left: 3.5rem;
-}
-
-.logo {
-  max-width: 100%;
-  height: auto;
-} */
-
 .form {
   width: 40rem;
   background-color: white;
@@ -76,6 +65,11 @@ body {
   width: 8rem;
 }
 
-.ant-descriptions-item-content{
+.reset-button {
+  margin-left: 2rem;
+  width: 8rem;
+}
+
+.ant-descriptions-item-content {
   text-align: center !important;
 }

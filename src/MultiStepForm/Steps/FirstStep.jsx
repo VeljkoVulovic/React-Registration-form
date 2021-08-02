@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Button, Form, Input, Checkbox } from "antd";
 import { UserOutlined, IdcardOutlined, HomeOutlined } from "@ant-design/icons";
 import { Controller, useForm } from "react-hook-form";
-import FormDataContext from "../context/FormDataContext";
+import FormDataContext from "../Context/FormDataContext";
 import PropTypes from "prop-types";
 
 const FirstStep = ({ setStep }) => {
@@ -14,7 +14,6 @@ const FirstStep = ({ setStep }) => {
     trigger,
     formState: { errors },
   } = useForm({
-    mode: "onTouched",
     defaultValues: {
       fname: data?.fname,
       lname: data?.lname,
@@ -88,7 +87,7 @@ const FirstStep = ({ setStep }) => {
               value: 25,
               message: "Max length not met",
             },
-            lettersOnlyValidator: {
+            pattern: {
               value: /^[A-Za-z]+$/i,
               message: "Letters only validator failed",
             },

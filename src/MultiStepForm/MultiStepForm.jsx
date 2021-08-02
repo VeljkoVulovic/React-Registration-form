@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormDataProvider } from "./context/FormDataContext";
+import { FormDataProvider } from "./Context/FormDataContext";
 import FirstStep from "./Steps/FirstStep";
 import SecondStep from "./Steps/SecondStep";
 import ReviewStep from "./Steps/ReviewStep";
