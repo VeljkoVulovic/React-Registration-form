@@ -1,17 +1,23 @@
 import React, { useContext } from "react";
 import { Button, Form, Input, Checkbox } from "antd";
-import { UserOutlined, IdcardOutlined, HomeOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  IdcardOutlined,
+  HomeOutlined,
+  ArrowRightOutlined,
+} from "@ant-design/icons";
 import { Controller, useForm } from "react-hook-form";
-import FormDataContext from "../Context/FormDataContext";
+import FormDataContext from "../context/FormDataContext";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const FirstStep = ({ setStep }) => {
   const { data, setValues } = useContext(FormDataContext);
+  const { t } = useTranslation();
 
   const {
     handleSubmit,
     control,
-    trigger,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -23,7 +29,6 @@ const FirstStep = ({ setStep }) => {
   });
 
   const onSubmit = (firstStepData) => {
-    trigger();
     setValues(firstStepData);
     setStep(1);
   };
@@ -31,7 +36,7 @@ const FirstStep = ({ setStep }) => {
   return (
     <Form onSubmitCapture={handleSubmit(onSubmit)} layout="vertical">
       <Form.Item
-        label={"First name"}
+        label={t("fields.fname")}
         help={errors["fname"] && errors["fname"].message}
         validateStatus={errors["fname"] && "error"}
         hasFeedback
@@ -42,31 +47,31 @@ const FirstStep = ({ setStep }) => {
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             minLength: {
               value: 2,
-              message: "Min length not met",
+              message: t("errorMessages.min_length"),
             },
             maxLength: {
               value: 25,
-              message: "Max length not met",
+              message: t("errorMessages.max_length"),
             },
           }}
           render={({ field }) => (
             <Input
               {...field}
-              prefix={<UserOutlined className="site-form-item-icon" />}
+              prefix={<UserOutlined />}
               allowClear
               type="string"
-              placeholder={"First name"}
+              placeholder={t("fields.fname")}
             />
           )}
         />
       </Form.Item>
 
       <Form.Item
-        label={"Last name"}
+        label={t("fields.lname")}
         help={errors["lname"] && errors["lname"].message}
         validateStatus={errors["lname"] && "error"}
         hasFeedback
@@ -77,15 +82,15 @@ const FirstStep = ({ setStep }) => {
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             minLength: {
               value: 2,
-              message: "Min length not met",
+              message: t("errorMessages.min_length"),
             },
             maxLength: {
               value: 25,
-              message: "Max length not met",
+              message: t("errorMessages.max_length"),
             },
             pattern: {
               value: /^[A-Za-z]+$/i,
@@ -95,17 +100,17 @@ const FirstStep = ({ setStep }) => {
           render={({ field }) => (
             <Input
               {...field}
-              prefix={<IdcardOutlined className="site-form-item-icon" />}
+              prefix={<IdcardOutlined />}
               allowClear
               type="string"
-              placeholder={"Last name"}
+              placeholder={t("fields.lname")}
             />
           )}
         />
       </Form.Item>
 
       <Form.Item
-        label={"Address"}
+        label={t("fields.address")}
         help={errors["address"] && errors["address"].message}
         validateStatus={errors["address"] && "error"}
         hasFeedback
@@ -116,20 +121,20 @@ const FirstStep = ({ setStep }) => {
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             maxLength: {
               value: 50,
-              message: "Max length not met",
+              message: t("errorMessages.max_length"),
             },
           }}
           render={({ field }) => (
             <Input
               {...field}
-              prefix={<HomeOutlined className="site-form-item-icon" />}
+              prefix={<HomeOutlined />}
               allowClear
               type="string"
-              placeholder={"Address"}
+              placeholder={t("fields.address")}
             />
           )}
         />
@@ -146,20 +151,20 @@ const FirstStep = ({ setStep }) => {
             rules={{
               required: {
                 value: true,
-                message: "This field is required",
+                message: t("errorMessages.required"),
               },
             }}
             render={({ field }) => (
               <Checkbox defaultChecked={data?.terms} {...field}>
-                I accept the Terms and Conditions
+                {t("fields.terms")}
               </Checkbox>
             )}
           />
         </Form.Item>
       </div>
       <div className="form-buttons">
-        <Button type="primary" htmlType="submit">
-          Next Step
+        <Button type="primary" htmlType="submit" icon={<ArrowRightOutlined />}>
+          {t("buttons.nextStep")}
         </Button>
       </div>
     </Form>

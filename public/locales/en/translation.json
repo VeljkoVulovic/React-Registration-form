@@ -1,0 +1,39 @@
+{
+  "form": {
+    "title": "Registration form",
+    "personal": "Personal",
+    "login": "Login",
+    "review": "Review"
+  },
+  "fields": {
+    "fname": "First name",
+    "lname": "Last name",
+    "address": "Address",
+    "terms": "I accept the Terms and Conditions",
+    "username": "Username",
+    "email": "E-mail",
+    "password": "Password",
+    "password_confirm": "Password Confirmation"
+  },
+  "buttons": {
+    "nextStep": "Next step",
+    "back": "Back",
+    "reset": "Reset",
+    "register": "Register"
+  },
+  "errorMessages": {
+    "required": "This field is required",
+    "min_length": "Min length not met",
+    "max_length": "Max length not met",
+    "letters_only": "Letters only validator failed",
+    "email_valid": "Email validation failed",
+    "password_strength": "Password strength failed",
+    "password_match": "The passwords do not match"
+  },
+  "registration": {
+    "loading": "Loading...",
+    "user": "User ",
+    "successfully": " registered successfully",
+    "unsuccessfully": " registered unsuccessfully"
+  }
+}

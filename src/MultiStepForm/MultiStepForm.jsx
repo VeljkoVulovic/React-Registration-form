@@ -1,40 +1,56 @@
 import React, { useState } from "react";
-import { FormDataProvider } from "./Context/FormDataContext";
-import FirstStep from "./Steps/FirstStep";
-import SecondStep from "./Steps/SecondStep";
-import ReviewStep from "./Steps/ReviewStep";
-import { Steps } from "antd";
+import { FormDataProvider } from "./context/FormDataContext";
+import FirstStep from "./steps/FirstStep";
+import SecondStep from "./steps/SecondStep";
+import ReviewStep from "./steps/ReviewStep";
+import { Steps, Button } from "antd";
+import { useTranslation } from "react-i18next";
+import MNEFlag from "../flags/MNEFlag";
+import ENFlag from "../flags/ENFlag";
 
 const { Step } = Steps;
 
 const steps = [
   {
-    title: "Personal",
+    title: "personal",
   },
   {
-    title: "Login",
+    title: "login",
   },
   {
-    title: "Review",
+    title: "review",
   },
 ];
 
 export default function MultiStepForm() {
   const [current, setCurrent] = useState(0);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
 
   return (
     <FormDataProvider>
       <>
+        <div class="lang-buttons">
+          <Button onClick={() => changeLanguage("en")}>
+            <ENFlag />
+          </Button>
+          <Button onClick={() => changeLanguage("me")}>
+            <MNEFlag />
+          </Button>
+        </div>
         <div className="form">
-          <h1 className="form-title">Registration form</h1>
+          <h1 className="form-title">{t("form.title")}</h1>
           <div className="form-steps">
             <Steps current={current} size="small">
               {steps.map((item) => (
-                <Step key={item.title} title={item.title} />
+                <Step key={item.title} title={t(`form.${item.title}`)} />
               ))}
             </Steps>
           </div>
-          <div className="form-fields">
+          <div>
             {current === 0 && <FirstStep setStep={setCurrent} />}
             {current === 1 && <SecondStep setStep={setCurrent} />}
             {current === 2 && <ReviewStep setStep={setCurrent} />}

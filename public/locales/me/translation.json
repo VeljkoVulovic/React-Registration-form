@@ -1,0 +1,39 @@
+{
+  "form": {
+    "title": "Registraciona forma",
+    "personal": "Licno",
+    "login": "Prijava",
+    "review": "Pregled"
+  },
+  "fields": {
+    "fname": "Ime",
+    "lname": "Prezime",
+    "address": "Adresa",
+    "terms": "Prihvatam uslove i odredbe",
+    "username": "Korisnicko ime",
+    "email": "E-mail",
+    "password": "Lozinka",
+    "password_confirm": "Potvrdi lozinku"
+  },
+  "buttons": {
+    "nextStep": "Sledeci korak",
+    "back": "Nazad",
+    "reset": "Reset",
+    "register": "Prijavi se"
+  },
+  "errorMessages": {
+    "required": "Ovo polje je obavezno",
+    "min_length": "Minimalna duzina nije ispunjena",
+    "max_length": "Miksimalna duzina nije ispunjena",
+    "letters_only": "Dozvoljena su samo slova",
+    "email_valid": "Validacija e-maila nije uspjela",
+    "password_strength": "Lozinka nije uspjela",
+    "password_match": "Lozinke se ne poklapaju"
+  },
+  "registration": {
+    "loading": "Ucitavanje...",
+    "user": "Korisnik ",
+    "successfully": " se uspesno registrovao",
+    "unsuccessfully": " se neuspesno registrovao"
+  }
+}

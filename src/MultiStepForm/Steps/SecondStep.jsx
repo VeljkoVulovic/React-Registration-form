@@ -5,9 +5,12 @@ import {
   SolutionOutlined,
   MailOutlined,
   LockOutlined,
+  ArrowRightOutlined,
+  ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { Controller, useForm } from "react-hook-form";
-import FormDataContext from "../Context/FormDataContext";
+import FormDataContext from "../context/FormDataContext";
+import { useTranslation } from "react-i18next";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -16,6 +19,7 @@ const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
 
 export default function SecondStep({ setStep }) {
   const { data, setValues } = useContext(FormDataContext);
+  const { t } = useTranslation();
 
   const {
     control,
@@ -39,7 +43,7 @@ export default function SecondStep({ setStep }) {
   return (
     <Form onSubmitCapture={handleSubmit(onSubmit)} layout="vertical">
       <Form.Item
-        label={"Username"}
+        label={t("fields.username")}
         help={errors["username"] && errors["username"].message}
         validateStatus={errors["username"] && "error"}
         hasFeedback
@@ -50,31 +54,31 @@ export default function SecondStep({ setStep }) {
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             minLength: {
               value: 4,
-              message: "Min length not met",
+              message: t("errorMessages.min_length"),
             },
             maxLength: {
               value: 20,
-              message: "Max length not met",
+              message: t("errorMessages.max_length"),
             },
           }}
           render={({ field }) => (
             <Input
               {...field}
-              prefix={<SolutionOutlined className="site-form-item-icon" />}
+              prefix={<SolutionOutlined />}
               allowClear
               type="string"
-              placeholder={"Username"}
+              placeholder={t("fields.username")}
             />
           )}
         />
       </Form.Item>
 
       <Form.Item
-        label={"E-mail"}
+        label={t("fields.email")}
         help={errors["email"] && errors["email"].message}
         validateStatus={errors["email"] && "error"}
         hasFeedback
@@ -85,27 +89,27 @@ export default function SecondStep({ setStep }) {
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             pattern: {
               value: emailRegex,
-              message: "Email validation failed",
+              message: t("errorMessages.email_valid"),
             },
           }}
           render={({ field }) => (
             <Input
               {...field}
-              prefix={<MailOutlined className="site-form-item-icon" />}
+              prefix={<MailOutlined />}
               allowClear
               type="string"
-              placeholder={"E-mail"}
+              placeholder={t("fields.email")}
             />
           )}
         />
       </Form.Item>
 
       <Form.Item
-        label={"Password"}
+        label={t("fields.password")}
         help={errors["password"] && errors["password"].message}
         validateStatus={errors["password"] && "error"}
         hasFeedback
@@ -116,27 +120,27 @@ export default function SecondStep({ setStep }) {
           render={({ field }) => (
             <Input.Password
               {...field}
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              prefix={<LockOutlined />}
               allowClear
               type="password"
-              placeholder={"Password"}
+              placeholder={t("fields.password")}
             />
           )}
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             pattern: {
               value: passwordRegex,
-              message: "Password strength failed",
+              message: t("errorMessages.password_strength"),
             },
           }}
         />
       </Form.Item>
 
       <Form.Item
-        label={"Password Confirmation"}
+        label={t("fields.password_confirm")}
         help={errors["password_confirm"] && errors["password_confirm"].message}
         validateStatus={errors["password_confirm"] && "error"}
         hasFeedback
@@ -147,26 +151,26 @@ export default function SecondStep({ setStep }) {
           render={({ field }) => (
             <Input.Password
               {...field}
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              prefix={<LockOutlined />}
               allowClear
               type="password"
-              placeholder={"Password Confirmation"}
+              placeholder={t("fields.password_confirm")}
             />
           )}
           rules={{
             required: {
               value: true,
-              message: "This field is required",
+              message: t("errorMessages.required"),
             },
             pattern: {
               value: passwordRegex,
-              message: "Password strength failed",
+              message: t("errorMessages.password_strength"),
             },
             validate: (value) => {
               if (value === getValues()["password"]) {
                 return true;
               } else {
-                return "The passwords do not match";
+                return t("errorMessages.password_match");
               }
             },
           }}
@@ -174,11 +178,15 @@ export default function SecondStep({ setStep }) {
       </Form.Item>
 
       <div className="form-buttons">
-        <Button className="back-button" onClick={() => setStep(0)}>
-          Back
+        <Button
+          className="back-button"
+          icon={<ArrowLeftOutlined />}
+          onClick={() => setStep(0)}
+        >
+          {t("buttons.back")}
         </Button>
-        <Button type="primary" htmlType="submit">
-          Next Step
+        <Button type="primary" htmlType="submit" icon={<ArrowRightOutlined />}>
+          {t("buttons.nextStep")}
         </Button>
       </div>
     </Form>

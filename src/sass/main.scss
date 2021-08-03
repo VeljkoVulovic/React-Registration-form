@@ -1,10 +1,16 @@
+@mixin textAlignCenter {
+  text-align: center !important;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   padding: 3rem;
@@ -12,7 +18,8 @@ body {
   font-weight: 500;
   line-height: 1.7;
   box-sizing: border-box;
-  background-color: #000000 !important; }
+  background-color: #000000 !important;
+}
 
 .App {
   height: 95vh;
@@ -20,10 +27,12 @@ body {
   background-size: cover;
   background-position: top;
   border-radius: 0.5rem;
-  box-shadow: 0 0 1.5rem 0 #000000 inset; }
+  box-shadow: 0 0 1.5rem 0 #000000 inset;
+}
 
 .lang-buttons {
-  float: right; }
+  float: right;
+}
 
 .form {
   width: 40rem;
@@ -34,26 +43,39 @@ body {
   transform: translate(-50%, -50%);
   opacity: 0.93;
   padding: 3.5rem;
-  border-radius: 0.5rem; }
-  .form-title {
-    text-align: center !important;
+  border-radius: 0.5rem;
+
+  &-title {
+    @include textAlignCenter();
     margin-bottom: 3rem;
-    font-family: cursive; }
-  .form-steps {
-    margin-bottom: 3rem; }
-  .form-checkbox {
-    text-align: center !important; }
-  .form-buttons {
-    text-align: center !important; }
+    font-family: cursive;
+  }
+
+  &-steps {
+    margin-bottom: 3rem;
+  }
+
+  &-checkbox {
+    @include textAlignCenter();
+  }
+
+  &-buttons {
+    @include textAlignCenter();
+  }
+}
 
 .register-button {
-  margin-top: 2.4rem; }
+  margin-top: 2.4rem;
+}
 
 .back-button {
-  margin-right: 1.5rem; }
+  margin-right: 1.5rem;
+}
 
 .reset-button {
-  margin-left: 1.5rem; }
+  margin-left: 1.5rem;
+}
 
 .ant-descriptions-item-content {
-  text-align: center !important; }
+  @include textAlignCenter();
+}

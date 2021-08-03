@@ -1,4 +1,4 @@
-import MultiStepForm from "./MultiStepForm/MultiStepForm";
+import MultiStepForm from "./multiStepForm/MultiStepForm";
 
 const App = () => {
   return (
