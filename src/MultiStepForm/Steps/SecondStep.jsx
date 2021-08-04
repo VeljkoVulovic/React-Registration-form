@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import FormDataContext from "../context/FormDataContext";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Form, Input } from "antd";
 import {
   SolutionOutlined,
@@ -8,8 +9,7 @@ import {
   ArrowRightOutlined,
   ArrowLeftOutlined,
 } from "@ant-design/icons";
-import { Controller, useForm } from "react-hook-form";
-import FormDataContext from "../context/FormDataContext";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 
 const emailRegex =
@@ -112,6 +112,7 @@ export default function SecondStep({ setStep }) {
         label={t("fields.password")}
         help={errors["password"] && errors["password"].message}
         validateStatus={errors["password"] && "error"}
+        tooltip={t("errorMessages.password_tooltip")}
         hasFeedback
       >
         <Controller
@@ -143,6 +144,7 @@ export default function SecondStep({ setStep }) {
         label={t("fields.password_confirm")}
         help={errors["password_confirm"] && errors["password_confirm"].message}
         validateStatus={errors["password_confirm"] && "error"}
+        tooltip={t("errorMessages.password_tooltip")}
         hasFeedback
       >
         <Controller

@@ -28,12 +28,13 @@
     "letters_only": "Dozvoljena su samo slova",
     "email_valid": "Validacija e-maila nije uspjela",
     "password_strength": "Lozinka nije uspjela",
-    "password_match": "Lozinke se ne poklapaju"
+    "password_match": "Lozinke se ne poklapaju",
+    "password_tooltip": "Lozinka mora da sadrzi velika slova, mala slova, brojeve i specijalna slova."
   },
   "registration": {
     "loading": "Ucitavanje...",
     "user": "Korisnik ",
-    "successfully": " se uspesno registrovao",
-    "unsuccessfully": " se neuspesno registrovao"
+    "successfully": " se uspesno registrovao!",
+    "unsuccessfully": " se neuspesno registrovao!"
   }
 }

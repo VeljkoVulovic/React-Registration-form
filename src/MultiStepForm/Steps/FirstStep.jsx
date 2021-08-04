@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import FormDataContext from "../context/FormDataContext";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Form, Input, Checkbox } from "antd";
 import {
   UserOutlined,
@@ -6,8 +8,6 @@ import {
   HomeOutlined,
   ArrowRightOutlined,
 } from "@ant-design/icons";
-import { Controller, useForm } from "react-hook-form";
-import FormDataContext from "../context/FormDataContext";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 

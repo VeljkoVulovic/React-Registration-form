@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FormDataProvider } from "./context/FormDataContext";
-import FirstStep from "./steps/FirstStep";
-import SecondStep from "./steps/SecondStep";
-import ReviewStep from "./steps/ReviewStep";
+import FirstStep from "./Steps/FirstStep";
+import SecondStep from "./Steps/SecondStep";
+import ReviewStep from "./Steps/ReviewStep";
 import { Steps, Button } from "antd";
 import { useTranslation } from "react-i18next";
 import MNEFlag from "../flags/MNEFlag";

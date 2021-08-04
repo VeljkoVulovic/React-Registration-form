@@ -28,12 +28,13 @@
     "letters_only": "Letters only validator failed",
     "email_valid": "Email validation failed",
     "password_strength": "Password strength failed",
-    "password_match": "The passwords do not match"
+    "password_match": "The passwords do not match",
+    "password_tooltip": "The password must contain uppercase characters, lowercase characters, digits and special characters."
   },
   "registration": {
     "loading": "Loading...",
     "user": "User ",
-    "successfully": " registered successfully",
-    "unsuccessfully": " registered unsuccessfully"
+    "successfully": " registered successfully!",
+    "unsuccessfully": " registered unsuccessfully!"
   }
 }

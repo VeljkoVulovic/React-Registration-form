@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import FormDataContext from "../context/FormDataContext";
 import { Button, Descriptions, message } from "antd";
 import {
   RollbackOutlined,
   UploadOutlined,
   ArrowLeftOutlined,
 } from "@ant-design/icons";
-import FormDataContext from "../context/FormDataContext";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 
 export default function ReviewStep({ setStep }) {

@@ -1,5 +1,5 @@
 @mixin textAlignCenter {
-  text-align: center !important;
+  text-align: center;
 }
 
 * {
@@ -77,5 +77,5 @@ body {
 }
 
 .ant-descriptions-item-content {
-  @include textAlignCenter();
+  text-align: center !important;
 }
