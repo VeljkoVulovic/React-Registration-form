@@ -33,7 +33,7 @@ export default function MultiStepForm() {
   return (
     <FormDataProvider>
       <>
-        <div class="lang-buttons">
+        <div className="lang-buttons">
           <Button onClick={() => changeLanguage("en")}>
             <ENFlag />
           </Button>
