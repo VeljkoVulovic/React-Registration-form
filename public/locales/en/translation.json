@@ -29,7 +29,7 @@
     "email_valid": "Email validation failed",
     "password_strength": "Password strength failed",
     "password_match": "The passwords do not match",
-    "password_tooltip": "The password must contain uppercase characters, lowercase characters, digits and special characters."
+    "password_tooltip": "The password must contain upper-case characters, lower-case characters, digits and special characters."
   },
   "registration": {
     "loading": "Loading...",

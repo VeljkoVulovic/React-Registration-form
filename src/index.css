@@ -14,6 +14,12 @@ body {
   box-sizing: border-box;
   background-color: #000000 !important; }
 
+h1 {
+  font-size: 3.2rem !important; }
+
+label {
+  font-size: 1.7rem !important; }
+
 .App {
   height: 95vh;
   background-image: url(img/background.jpg);
@@ -57,3 +63,6 @@ body {
 
 .ant-descriptions-item-content {
   text-align: center !important; }
+
+.ant-steps-item-title {
+  font-size: 1.5rem !important; }

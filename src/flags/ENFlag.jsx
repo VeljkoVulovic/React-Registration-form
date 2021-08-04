@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 export default function ENFlag() {
   return (
-    <div style={{ width: 40, height: 16, display: 'inline-block' }}>
+    <div style={{ width: 40, height: 16, display: "inline-block" }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 60 30"

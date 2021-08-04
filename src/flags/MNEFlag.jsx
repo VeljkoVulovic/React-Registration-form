@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function MNEFlag() {
   return (
@@ -6,7 +6,7 @@ export default function MNEFlag() {
       style={{
         width: 40,
         height: 16,
-        display: 'inline-block',
+        display: "inline-block",
       }}
     >
       <svg
